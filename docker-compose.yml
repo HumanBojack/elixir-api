@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  api:
+    image: "elixir:latest"
+    volumes:
+      - .:/elixir_api
+    ports:
+      - "4000:4000"
+    tty: true
+    command: /bin/bash
+
+  db:
+    image: "postgres:latest"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+
+# mix archive.install hex phx_new
+# mix phx.new elixir_api --app api --module Todolist --no-html --no-assets
